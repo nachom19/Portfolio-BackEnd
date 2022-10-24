@@ -16,7 +16,7 @@ import lombok.Setter;
 public class Persona {
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY )
-    private Long id;
+    private int id;
     
     @NotNull
     @Size (min = 1, max = 50, message = "Error en la longitud del campo")
@@ -25,22 +25,20 @@ public class Persona {
     @NotNull
     @Size (min = 1, max = 50, message = "Error en la longitud del campo")
     private String apellido;
+    
+    @NotNull
+    private String descripcion;
         
-    @Size (min = 1, max = 50, message = "Error en la longitud del campo")
     private String img;
 
     //Constructores
     public Persona() {
     }
 
-    public Persona(String nombre, String apellido, String img) {
+    public Persona(String nombre, String apellido, String descripcion, String img) {
         this.nombre = nombre;
         this.apellido = apellido;
+        this.descripcion = descripcion;
         this.img = img;
     }
-
-    
-    
-    
-    
 }
