@@ -39,7 +39,7 @@ public class AuthController {
     @Autowired RolService rolService;
     @Autowired JwtProvider jwtProvider;
     
-    @PostMapping ("/nuevo_user")
+    @PostMapping ("/nuevo")
     public ResponseEntity<?>nuevo(@Valid @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult){
         if (bindingResult.hasErrors())
           return new ResponseEntity(new Mensaje ("Campos completados erroneamente o email invalido"), HttpStatus.BAD_REQUEST);
