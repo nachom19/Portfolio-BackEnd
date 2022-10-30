@@ -48,6 +48,12 @@ public class PersonaController {
     public ResponseEntity<?> create(@RequestBody dtoPersona dtopersona) {
         if (StringUtils.isBlank(dtopersona.getNombre())) 
             return new ResponseEntity(new Mensaje("El nombre de la Persona es obligatorio"), HttpStatus.BAD_REQUEST);
+        if (StringUtils.isBlank(dtopersona.getApellido())) 
+            return new ResponseEntity(new Mensaje("El apellido de la Persona es obligatorio"), HttpStatus.BAD_REQUEST);
+        if (StringUtils.isBlank(dtopersona.getDescripcion())) 
+            return new ResponseEntity(new Mensaje("La descripción de la Persona es obligatoria"), HttpStatus.BAD_REQUEST);
+        if (StringUtils.isBlank(dtopersona.getImg())) 
+            return new ResponseEntity(new Mensaje("La imagen de la Persona es obligatorio"), HttpStatus.BAD_REQUEST);
         if (iPersonaService.existsByNombre(dtopersona.getNombre()))
             return new  ResponseEntity(new Mensaje("Esa persona ya existe"), HttpStatus.BAD_REQUEST);
         
