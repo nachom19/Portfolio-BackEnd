@@ -43,7 +43,7 @@ public class PersonaController {
         return new ResponseEntity(persona, HttpStatus.OK);
     }
 
-    /*@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("/crear")
     public ResponseEntity<?> create(@RequestBody dtoPersona dtopersona) {
         if (StringUtils.isBlank(dtopersona.getNombre())) 
@@ -51,11 +51,11 @@ public class PersonaController {
         if (iPersonaService.existsByNombre(dtopersona.getNombre()))
             return new  ResponseEntity(new Mensaje("Esa persona ya existe"), HttpStatus.BAD_REQUEST);
         
-        Persona persona = new Persona (dtopersona.getNombre(), dtopersona.getDescripcion());
+        Persona persona = new Persona (dtopersona.getNombre(), dtopersona.getApellido(), dtopersona.getDescripcion(), dtopersona.getImg());
         iPersonaService.save(persona);
         
-        return new ResponseEntity(new Mensaje("Educación agregada"), HttpStatus.OK);
-    }*/
+        return new ResponseEntity(new Mensaje("Persona agregada"), HttpStatus.OK);
+    }
 
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/actualizar/{id}")
